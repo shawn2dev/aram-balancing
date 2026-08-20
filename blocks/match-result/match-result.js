@@ -1,3 +1,4 @@
+import { loadCSS } from '../../scripts/aem.js';
 import { defaultLevelMap, computeLevel } from '../../scripts/utils.js';
 
 let teamsHistory = [];
@@ -81,7 +82,7 @@ const tierBadge = (tier, type) => {
   };
   const color = colorMap[tier] || 'secondary';
   const title = type === 'current' ? '현재 티어' : '최고 티어';
-  return `<span class="badge bg-${color}" title="${title}">${tier}</span>`;
+  return `<span class="badge bg-${color} tier-badge" title="${title}">${tier}</span>`;
 };
 
 // ── HTML generators ───────────────────────────────────────────────────────────
@@ -92,9 +93,8 @@ const generatePlayerHtml = (player) => `
   data-current="${player.currentTier}" data-peak="${player.peakTier}">
   <div class="name fw-semibold">${player.name}</div>
   <div class="d-flex align-items-center gap-1 flex-shrink-0">
-    ${tierBadge(player.currentTier, 'current')}
-    <span class="text-white-50 small">↑</span>
-    ${tierBadge(player.peakTier, 'peak')}
+    <span class="tier-label">현</span>${tierBadge(player.currentTier, 'current')}
+    <span class="tier-label ms-1">최</span>${tierBadge(player.peakTier, 'peak')}
     <span class="badge bg-dark border border-secondary ms-1 score-badge"
       title="Score">${fmtScore(player.level)}</span>
   </div>
@@ -152,9 +152,6 @@ const attachSwapHandlers = (resultRow) => {
         p.setAttribute(attr, tmp);
       });
       swapping.classList.remove('swap');
-
-      // Re-attach handlers after DOM swap
-      attachSwapHandlers(resultRow);
 
       // Update totals
       resultRow.querySelectorAll('.team').forEach(recalcTotal);
@@ -220,6 +217,7 @@ const resultBodyHtml = () => `
 // ── Public: called by team-config when modal opens ────────────────────────────
 
 export const buildMatch = (container) => {
+  loadCSS(`${window.hlx.codeBasePath}/blocks/match-result/match-result.css`);
   teamsHistory = [];
   historyIndex = 0;
 

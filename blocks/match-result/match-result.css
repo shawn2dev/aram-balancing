@@ -2,6 +2,7 @@
 
 .player {
   background-color: #fff;
+  color: #333;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.12s ease;
@@ -21,6 +22,15 @@
 .player .name {
   font-size: 0.95rem;
   min-width: 80px;
+}
+
+.tier-label {
+  font-size: 0.7rem;
+  color: #333;
+}
+
+.tier-badge {
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
 }
 
 /* ── Team column ─────────────────────────────────────────────────────────────── */

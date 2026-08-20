@@ -29,7 +29,8 @@ const validateFindMatch = () => {
     const name = p.querySelector('.input-participants').value.trim();
     const currentTier = p.querySelector('.current-tier-select').value;
     const peakTier = p.querySelector('.peak-tier-select').value;
-    if (!name || !currentTier || !peakTier) allValid = false;
+    // name 필수 + 티어는 최소 하나 이상 설정되어야 함
+    if (!name || (!currentTier && !peakTier)) allValid = false;
   });
   const btn = document.getElementById('find-match-btn');
   if (btn) btn.disabled = !allValid;
@@ -199,6 +200,21 @@ export default async function init(block) {
   const configBody = document.createElement('div');
   configBody.innerHTML = teamConfigBody;
   block.prepend(configBody);
+
+  // Move the doc's H1 into the site-header instead of hardcoded text
+  const h1 = block.querySelector('h1');
+  const headerTitle = configBody.querySelector('.site-header-title');
+  if (h1 && headerTitle) {
+    h1.classList.add('text-white', 'mb-0', 'fw-bold', 'fs-4');
+    h1.style.display = 'block'; // override "main h1 { display: none }" in styles.css
+    headerTitle.replaceWith(h1);
+  }
+
+  // Move modal to <body> — keeps it outside the block's stacking context
+  // so Bootstrap's backdrop (z-index:1050) doesn't cover the modal (z-index:1055)
+  const modal = configBody.querySelector('#matchResultModal');
+  if (modal) document.body.append(modal);
+
   initTeam();
 }
 
@@ -209,7 +225,7 @@ const teamConfigBody = `
 <div class="container-fluid px-0">
   <div class="site-header bg-dark-grey-opacity py-3">
     <div class="container d-flex justify-content-between align-items-center">
-      <h4 class="text-white mb-0 fw-bold">⚔ ARAM Balancing</h4>
+      <span class="site-header-title"></span>
     </div>
   </div>
 
