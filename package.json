@@ -1,0 +1,22 @@
+{
+  "name": "aram-balancing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ARAM team balancing tool",
+  "scripts": {
+    "lint:js": "eslint .",
+    "lint:css": "stylelint blocks/**/*.css styles/*.css",
+    "lint": "npm run lint:js && npm run lint:css"
+  },
+  "author": "",
+  "license": "Apache License 2.0",
+  "devDependencies": {
+    "@adobe/aem-cli": "^2.7.1",
+    "@babel/eslint-parser": "7.25.1",
+    "eslint": "8.57.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-plugin-import": "2.29.1",
+    "stylelint": "16.8.2",
+    "stylelint-config-standard": "36.0.1"
+  }
+}

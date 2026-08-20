@@ -1,0 +1,60 @@
+/* ── Player cards ────────────────────────────────────────────────────────────── */
+
+.player {
+  background-color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.12s ease;
+  user-select: none;
+}
+
+.player:not(.swap):hover {
+  background-color: var(--bs-teal);
+  color: #fff;
+}
+
+.player.swap {
+  background-color: var(--bs-pink);
+  color: #fff;
+}
+
+.player .name {
+  font-size: 0.95rem;
+  min-width: 80px;
+}
+
+/* ── Team column ─────────────────────────────────────────────────────────────── */
+
+.team h5 {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.total-score {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* ── VS divider ──────────────────────────────────────────────────────────────── */
+
+.vs {
+  font-size: 2rem;
+}
+
+/* ── Action buttons ──────────────────────────────────────────────────────────── */
+
+#rerollBtn {
+  min-width: 110px;
+}
+
+.copy-message {
+  min-height: 18px;
+}
+
+@media (min-width: 576px) {
+  .player {
+    min-width: 220px;
+  }
+}

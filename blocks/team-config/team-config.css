@@ -1,0 +1,101 @@
+.gnav, code {
+  display: none;
+}
+
+header ~ main {
+  margin: 0;
+}
+
+.team-config {
+  color: var(--bs-white);
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+
+.bg-grey-opacity {
+  background-color: rgba(240, 240, 240, 0.06);
+}
+
+.bg-dark-grey-opacity {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+}
+
+/* ── General config ──────────────────────────────────────────────────────────── */
+
+.general-config label.text-white {
+  cursor: default;
+}
+
+/* ── Player rows ─────────────────────────────────────────────────────────────── */
+
+.participant-div {
+  border-radius: 6px;
+  transition: background-color 0.15s ease-in;
+}
+
+.participant-div:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.participant-div .form-control,
+.participant-div .form-select {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.participant-div .form-control:focus,
+.participant-div .form-select:focus {
+  border-color: var(--bs-primary) !important;
+  box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.3);
+}
+
+.participant-div .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ── Selects ─────────────────────────────────────────────────────────────────── */
+
+.current-tier-select option,
+.peak-tier-select option {
+  background-color: #1a2540;
+  color: #fff;
+}
+
+/* ── Find Match button ───────────────────────────────────────────────────────── */
+
+#find-match-btn {
+  min-width: 200px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 14px rgba(13, 110, 253, 0.4);
+  transition: box-shadow 0.2s, transform 0.1s;
+}
+
+#find-match-btn:not(:disabled):hover {
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.6);
+  transform: translateY(-1px);
+}
+
+#find-match-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Modal ───────────────────────────────────────────────────────────────────── */
+
+.modal-backdrop {
+  opacity: 0.85 !important;
+}
+
+#matchResultModal .modal-content {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
